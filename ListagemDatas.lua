@@ -30,8 +30,9 @@ composer.gotoScene("Menu", {effect = "slideLeft",time = 500})
 end
 
 function acaoTabela(event)
-
-		composer.gotoScene("Menu", {effect = "slideLeft",time = 500})
+        local linhaSelecionada = mui.getWidgetProperty("Cifras", "value")
+        --composer.gotoScene("Menu", {effect = "slideLeft",time = 500})
+        print(linhaSelecionada)
 
 end
 
