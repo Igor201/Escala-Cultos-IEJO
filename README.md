@@ -1,2 +1,2 @@
-# Repositorio-de-Cifras-Mobile
-Repositorio de Cifras Versão Mobile
+# Escalas de Culto IEJO
+Escalas de cultos da Igreja Evangelica Jardim das Oliveiras para Mobile
