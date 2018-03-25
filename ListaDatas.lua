@@ -13,5 +13,5 @@ listaDatas = { -- if 'key' use it for 'id' in the table row
 		{ key = "Row4", text = "25-03-2018", value = "4", isCategory = false }
  		}
 
-
+		 
 return listaDatas
