@@ -1,2 +1,2 @@
-# Escala-Cultos-IEJO
-APK Desenvolvido com corona SDK Para auxiliar nas cultos da IEJO
+# Repositorio-de-Cifras-Mobile
+Repositorio de Cifras Versão Mobile
