@@ -1,7 +1,9 @@
 local composer = require( "composer" )
 local listaDatas = require( "ListaDatas" )
+local Culto1 = require("ListaCultos")
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
+local service = require("Service")
  
 local scene = composer.newScene()
 
@@ -22,7 +24,6 @@ local title
 local button
 
 
-
 function mudarCena(event)
 
 composer.gotoScene("Menu", {effect = "slideLeft",time = 500})
@@ -30,7 +31,13 @@ composer.gotoScene("Menu", {effect = "slideLeft",time = 500})
 end
 
 function acaoTabela(event)
-        local linhaSelecionada = mui.getWidgetProperty("Cifras", "value")
+
+        local linhaSelecionada = mui.getWidgetProperty("Datas", "value")
+        if tonumber(linhaSelecionada) == 1 then
+
+            composer.gotoScene("ListagemCulto", {effect = "flipFadeOutIn",time = 500})
+        end    
+
         --composer.gotoScene("Menu", {effect = "slideLeft",time = 500})
         print(linhaSelecionada)
 
@@ -77,7 +84,7 @@ function scene:show( event )
  	
  	mui.newTableView({
  		parent = sceneGroup,
- 		name = "Cifras",
+ 		name = "Datas",
  		width = display.contentWidth,
         height = display.contentHeight - 50,
         top = display.contentWidth/6,
@@ -123,6 +130,10 @@ function scene:destroy( event )
  
     local sceneGroup = self.view
     -- Code here runs prior to the removal of scene's view
+
+    sceneGroup:removeSelf()
+    sceneGroup = nil
+    mui.destroy() 
  
 end
  

@@ -6,5 +6,7 @@
 
 -- Your code here
 
-local composer = require( "composer" )
-composer.gotoScene("TelaInicial", {effect = "fade",time = 1000})
+	display.setStatusBar( display.HiddenStatusBar )
+
+	local composer = require( "composer" )
+	composer.gotoScene("TelaInicial", {effect = "fade",time = 2000})

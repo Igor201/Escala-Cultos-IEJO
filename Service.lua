@@ -3,10 +3,16 @@ local Evento = require("Evento")
 
 local Service = {cultos = {}}
 
-function Service:new()
-    local s = setmetatable(s, {__index = Service})
-    s = getCultos();
-    return s
+function Service:novoService()
+
+    local ser = {}
+
+    setmetatable(ser, {__index = Service})
+
+    self.cultos = getCultos
+
+    return ser
+
 end
 
 --Culto = {data = nil, eventos = {}}

@@ -21,7 +21,7 @@ local button
 
 function mudarCena(event)
 
-composer.gotoScene("Menu", {effect = "fade",time = 500})
+composer.gotoScene("Menu", {effect = "fromBottom",time = 4000})
 
 end
 
@@ -31,7 +31,7 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
-    bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+    bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight*2)
     bg:setFillColor(1,1,1)
     sceneGroup:insert(bg)
 
@@ -47,7 +47,13 @@ function scene:create( event )
     button:setFillColor(0, 0.5, 1 )
     sceneGroup:insert(button)
 
+    local buttext = display.newText("INICIAR", display.contentCenterX, display.contentCenterY*1.7, "Impact", 20)
+    buttext:setFillColor(0, 0, 0 )
+    sceneGroup:insert(buttext)
+
     button:addEventListener("tap", mudarCena)
+
+    mudarCena()
 end
  
  
