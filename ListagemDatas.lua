@@ -32,14 +32,12 @@ end
 
 function acaoTabela(event)
 
-        local linhaSelecionada = mui.getWidgetProperty("Datas", "value")
-        if tonumber(linhaSelecionada) == 1 then
+local linhaSelecionada = mui.getWidgetProperty("Datas", "value")
 
-            composer.gotoScene("ListagemCulto", {effect = "flipFadeOutIn",time = 500})
-        end    
-
-        --composer.gotoScene("Menu", {effect = "slideLeft",time = 500})
-        print(linhaSelecionada)
+            composer.gotoScene("ListagemCulto", 
+                    {effect = "flipFadeOutIn",
+                    time = 500,
+                    params = {linha = linhaSelecionada}})
 
 end
 
@@ -49,7 +47,7 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
-    bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+    bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight*2)
     bg:setFillColor(1,1,1)
     sceneGroup:insert(bg)
 
@@ -86,7 +84,7 @@ function scene:show( event )
  		parent = sceneGroup,
  		name = "Datas",
  		width = display.contentWidth,
-        height = display.contentHeight - 50,
+        height = display.contentHeight ,
         top = display.contentWidth/6,
         left = 0,
         font = "Arial Black",--native.systemFont,

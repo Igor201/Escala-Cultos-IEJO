@@ -1,6 +1,6 @@
 local composer = require( "composer" )
 local listaDatas = require( "ListaDatas" )
-local Culto1 = require("ListaCultos")
+local Cultos = require("ListaCultos")
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
 local service = require("Service")
@@ -38,7 +38,7 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
-    bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+    bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight*2)
     bg:setFillColor(1,1,1)
     sceneGroup:insert(bg)
 
@@ -53,11 +53,26 @@ function scene:create( event )
 
     button:addEventListener("tap", mudarCena)
 
+    
+
+
 end
  
- 
+ function selecionaCulto( ... )
+     
+     local Culto = {}
+
+     Culto = Cultos:ordena(tonumber(idCulto))
+
+     return Culto
+     
+ end
+
+
 -- show()
 function scene:show( event )
+
+    idCulto = event.params.linha
  
     local sceneGroup = self.view
     local phase = event.phase
@@ -67,6 +82,7 @@ function scene:show( event )
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
 
+    print(event.params.linha)
 
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
@@ -76,7 +92,7 @@ function scene:show( event )
         parent = sceneGroup,
         name = "Cultos",
         width = display.contentWidth,
-        height = display.contentHeight - 50,
+        height = display.contentHeight,
         top = display.contentWidth/6,
         left = 0,
         font = "Arial Black",--native.systemFont,
@@ -91,7 +107,7 @@ function scene:show( event )
         scrollListener = mui.scrollListener,
         categoryLineColor = {1,1,1,0},
         categoryColor = { default={0.8,0.8,0.8,0.8} },
-        list = Culto1
+        list = selecionaCulto()
         })
  	
 
