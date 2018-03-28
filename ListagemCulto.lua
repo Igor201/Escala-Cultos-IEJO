@@ -23,18 +23,16 @@ display.setStatusBar( display.HiddenStatusBar )
 local bg
 local title
 local button
-
+local idCulto
+local Culto = {}
 
 function mudarCena(event)
-
-composer.gotoScene("ListagemDatas", {effect = "slideLeft",time = 500})
-
+    composer.gotoScene("ListagemDatas", {effect = "slideLeft",time = 500})
 end
-
 
 -- create()
 function scene:create( event )
- 
+
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
@@ -53,23 +51,17 @@ function scene:create( event )
 
     button:addEventListener("tap", mudarCena)
 
-    
-
-
 end
  
  function selecionaCulto( ... )
-     
-     local Culto = {}
-
+ 
      Culto = Cultos:ordena(tonumber(idCulto))
-
+     print(Culto[1])
      return Culto
      
  end
 
-
--- show()
+ -- show()
 function scene:show( event )
 
     idCulto = event.params.linha
@@ -81,12 +73,10 @@ function scene:show( event )
  
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
-
     print(event.params.linha)
 
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
-        
         
         mui.newTableView({
         parent = sceneGroup,
@@ -113,8 +103,7 @@ function scene:show( event )
 
     end
 end
- 
- 
+
 -- hide()
 function scene:hide( event )
  
@@ -129,22 +118,21 @@ function scene:hide( event )
  
     end
 end
- 
- 
+
 -- destroy()
 function scene:destroy( event )
- 
+     
     local sceneGroup = self.view
     -- Code here runs prior to the removal of scene's view
 
+    idCulto = nil
+    Culto = {}
     sceneGroup:removeSelf()
     sceneGroup = nil
     mui.destroy()    
  
 end
  
-
-
 -- -----------------------------------------------------------------------------------
 -- Scene event function listeners
 -- -----------------------------------------------------------------------------------

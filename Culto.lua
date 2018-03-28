@@ -1,7 +1,10 @@
 local Culto = {data = nil, eventos = {}}
 
 function Culto:new( data, eventos )
-    local c = setmetatable(culto, {__index = Culto})
+    local c = {}
+    local c = setmetatable(c, {__index = Culto})
+    c.data = data
+    c.eventos = eventos
     return c
 end
 

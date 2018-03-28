@@ -22,6 +22,7 @@ display.setStatusBar( display.HiddenStatusBar )
 local bg
 local title
 local button
+local lista
 
 
 function mudarCena(event)
@@ -42,7 +43,12 @@ local linhaSelecionada = mui.getWidgetProperty("Datas", "value")
 end
 
 -- create()
-function scene:create( event )
+function scene:create( event ) 
+    
+    
+    service:novoService()
+    lista = service:linhaTableView()
+ 
  
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
@@ -100,7 +106,7 @@ function scene:show( event )
         scrollListener = mui.scrollListener,
         categoryLineColor = {1,1,1,0},
         categoryColor = { default={0.8,0.8,0.8,0.8} },
-        list = listaDatas
+        list = lista
  		})
 
     end
