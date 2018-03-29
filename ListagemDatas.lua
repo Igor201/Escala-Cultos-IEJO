@@ -1,5 +1,5 @@
 local composer = require( "composer" )
-local listaDatas = require( "ListaDatas" )
+--local listaDatas = require( "ListaDatas" )
 local Culto1 = require("ListaCultos")
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )

@@ -66,14 +66,30 @@ end
 
 function Service:linhaTableView()
     local linha = {}
+
     for k,v in pairs(self.cultos) do
        table.insert( linha, k, { key = "Row" .. k, text = v.data, value = k, isCategory = false } )
     end
+    
     return linha
 end
 
 function Service:getCulto(id)
     return self[id];
+end
+
+function Service.listaEventosDoCulto(id)
+    local lista = {}    
+
+    local culto = Service[id]
+
+    -- for k,v in pairs(self[id].eventos) do
+    --     table.insert( lista, k, { key = "Row" .. k, text = v.descricao, value = k, isCategory = false } )
+    --  end
+
+     print(json.encode(culto))
+
+    return lista
 end
 
 return Service

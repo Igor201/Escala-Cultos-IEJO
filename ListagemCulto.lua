@@ -1,6 +1,6 @@
 local composer = require( "composer" )
-local listaDatas = require( "ListaDatas" )
-local Cultos = require("ListaCultos")
+--local listaDatas = require( "ListaDatas" )
+--local Cultos = require("ListaCultos")
 local mui = require( "materialui.mui" )
 local muiData = require( "materialui.mui-data" )
 local service = require("Service")
@@ -23,8 +23,7 @@ display.setStatusBar( display.HiddenStatusBar )
 local bg
 local title
 local button
-local idCulto
-local Culto = {}
+local listaEventos
 
 function mudarCena(event)
     composer.gotoScene("ListagemDatas", {effect = "slideLeft",time = 500})
@@ -32,6 +31,11 @@ end
 
 -- create()
 function scene:create( event )
+
+    service:novoService()
+    --listaEventos = service:listaEventosDoCulto(event.params.linha)
+    listaEventos = service:listaEventosDoCulto(1)
+
 
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
@@ -52,21 +56,12 @@ function scene:create( event )
     button:addEventListener("tap", mudarCena)
 
 end
- 
- function selecionaCulto( ... )
- 
-     Culto = Cultos:ordena(tonumber(idCulto))
-     print(Culto[1])
-     return Culto
-     
- end
 
  -- show()
-function scene:show( event )
-
-    idCulto = event.params.linha
+function scene:show( event ) 
  
     local sceneGroup = self.view
+
     local phase = event.phase
 
     mui.init()
@@ -97,7 +92,7 @@ function scene:show( event )
         scrollListener = mui.scrollListener,
         categoryLineColor = {1,1,1,0},
         categoryColor = { default={0.8,0.8,0.8,0.8} },
-        list = selecionaCulto()
+        list = {}
         })
  	
 
